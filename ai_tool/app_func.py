@@ -4,7 +4,7 @@ import pandas as pd
 
 conn = sqlite3.connect("../sql/final_marketing.db")
 
-client = genai.Client(api_key="AIzaSyBbPHHjOdbOSa23u-6gMhGeJ18FJy-LyUs")
+client = genai.Client(api_key="YOUR_API_KEY")
 
 def generate_sql(question):
     prompt = f"""
