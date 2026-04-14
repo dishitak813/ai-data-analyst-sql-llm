@@ -148,13 +148,18 @@ CTR = DIVIDE(SUM(fact_sales[clicks]), SUM(fact_sales[impressions]))
 
 ---
 
-## Example Questions
+## 10 Example Questions
 
-- Which campaign had the worst CPC in March?  
-- Summarise UK region performance  
-- Which campaign has highest ROI?  
-- Compare performance across regions  
-- What about February? (follow-up question)  
+1. Which campaign had the worst CPC in March?  
+2. Which campaign has the highest ROI overall?  
+3. Summarise UK region performance in terms of revenue and orders.  
+4. Which campaign generated the highest revenue?  
+5. What is the total spend and revenue by country?  
+6. Which campaign has the lowest CTR?  
+7. Compare performance across different regions.  
+8. What is the monthly trend of revenue and conversions?  
+9. Which campaign has the highest spend but low returns?  
+10. What about February? (follow-up question using conversation memory)  
 
 ---
 
