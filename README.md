@@ -21,7 +21,7 @@ This system converts user questions into SQL queries using an LLM, executes them
 ## Project Demo
 
 ### Streamlit UI
-[UI] <img width="2879" height="1603" alt="App UI image" src="https://github.com/user-attachments/assets/ea58686b-6730-49df-8a83-c72531202bf3" />
+[UI] <img width="2879" height="923" alt="App UI image" src="https://github.com/user-attachments/assets/a52ec2b1-2e68-4a34-b834-bbd5dd68fc0d" />
 
 ### Example Query Output
 [Output] <img width="2862" height="1473" alt="App UI image" src="https://github.com/user-attachments/assets/0e963552-352f-463f-8c2c-460e30e9536b" />
