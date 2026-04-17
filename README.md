@@ -21,13 +21,13 @@ This system converts user questions into SQL queries using an LLM, executes them
 ## Project Demo
 
 ### Streamlit UI
-[UI] <img width="2879" height="923" alt="App UI image" src="https://github.com/user-attachments/assets/a52ec2b1-2e68-4a34-b834-bbd5dd68fc0d" />
+<img width="2879" height="923" alt="App UI image" src="https://github.com/user-attachments/assets/a52ec2b1-2e68-4a34-b834-bbd5dd68fc0d" />
 
 ### Example Query Output
-[Output] <img width="2862" height="1473" alt="App UI image" src="https://github.com/user-attachments/assets/0e963552-352f-463f-8c2c-460e30e9536b" />
+<img width="2862" height="1473" alt="App UI image" src="https://github.com/user-attachments/assets/0e963552-352f-463f-8c2c-460e30e9536b" />
 
 ### Power BI Dashboard
-[Dashboard] <img width="2016" height="1135" alt="Dashboard image" src="https://github.com/user-attachments/assets/b3547f8b-e124-4011-9248-8db6437735b6" />
+<img width="2016" height="1135" alt="Dashboard image" src="https://github.com/user-attachments/assets/b3547f8b-e124-4011-9248-8db6437735b6" />
 
 
 ---
