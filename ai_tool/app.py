@@ -2,55 +2,79 @@ from app_func import ask_ai
 import sqlite3
 import streamlit as st
 
+# Page config
+st.set_page_config(page_title="AI Data Analyst", layout="wide")
+
+# DB connection
 conn = sqlite3.connect("../sql/final_marketing.db", check_same_thread=False)
 
-# Initialize memory
+# Memory
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
 st.title("📊 AI Data Analyst")
 
-question = st.text_input("Ask your question:")
+with st.form(key="chat_form"):
+    input_col, btn_col1, btn_col2 = st.columns([6,1,1])
 
-# Clear chat button
-if st.button("🧹 Clear Chat"):
+    with input_col:
+        question = st.text_input(
+            "", 
+            placeholder="Type your question..."
+        )
+
+    with btn_col1:
+        st.markdown("<br>", unsafe_allow_html=True)
+        submit = st.form_submit_button("▶ Run")
+
+    with btn_col2:
+        st.markdown("<br>", unsafe_allow_html=True)
+        clear = st.form_submit_button("🧹 Clear")
+
+if clear:
     st.session_state.chat_history = []
 
-if st.button("Run"):
+if submit and question:
+    try:
+        sql, df, explanation = ask_ai(
+            question,
+            conn,
+            st.session_state.chat_history
+        )
 
-    if question:
+        # Save chat
+        st.session_state.chat_history.append({
+            "question": question,
+            "sql": sql,
+            "answer": explanation
+        })
 
-        try:
-            # Pass history to function
-            sql, df, explanation = ask_ai(
-                question,
-                conn,
-                st.session_state.chat_history
-            )
+        st.markdown("### 🧠 Generated SQL")
+        st.code(sql, language="sql")
 
-            # Store in memory
-            st.session_state.chat_history.append({
-                "question": question,
-                "sql": sql,
-                "answer": explanation
-            })
+        st.markdown("### 📊 Query Result")
+        st.dataframe(df, use_container_width=True)
 
-            st.subheader("🧠 Generated SQL")
-            st.code(sql, language="sql")
+        st.markdown("### 🤖 AI Answer")
+        st.write(explanation)
 
-            st.subheader("📊 Query Result")
-            st.dataframe(df)
+    except Exception as e:
+        st.error(e)
 
-            st.subheader("🤖 AI Answer")
-            st.write(explanation)
+if len(st.session_state.chat_history) > 0:
 
-        except Exception as e:
-            st.error(e)
-
-# Show conversation history
-st.subheader("💬 Conversation History")
-
-for chat in st.session_state.chat_history[::-1]:
-    st.markdown(f"**Q:** {chat['question']}")
-    st.markdown(f"**A:** {chat['answer']}")
     st.markdown("---")
+    st.subheader("💬 Conversation History")
+
+    for chat in st.session_state.chat_history[::-1]:
+        st.markdown(f"""
+        <div style='background:#1e293b; padding:12px; border-radius:10px; margin-bottom:10px'>
+        <b>🧑 You:</b><br>{chat['question']}
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown(f"""
+        <div style='background:#0f172a; padding:12px; border-radius:10px; margin-bottom:20px'>
+        <b>🤖 AI:</b><br>{chat['answer']}
+        </div>
+        """, unsafe_allow_html=True)
